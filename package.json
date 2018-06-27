@@ -1,0 +1,17 @@
+{
+  "name": "digest-from-links",
+  "version": "0.0.1",
+  "description": "Making a html digest from a link list.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node -r dotenv/config app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "parse5": "^5.0.0",
+    "smmry": "^1.0.1"
+  }
+}
