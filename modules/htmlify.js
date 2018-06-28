@@ -17,7 +17,8 @@ const mailtemplate = categories => {
 				<br>
 				<br>
 				<ul>${ categories[ cat ] }</ul>
-				<br>`
+				<br>
+				`
 	}
 	return html
  }
