@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^6.0.0",
     "parse5": "^5.0.0",
+    "simple-youtube-api": "^5.0.2",
     "smmry": "^1.0.1"
   }
 }
