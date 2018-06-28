@@ -1,6 +1,7 @@
 // Input: Array { url: String, title: String, tldr: String }
 // Output: String
 
+// Termplate for <li>'s
 const listtemplate = page => { 
 	const domain = page.url.match( /(\/\/www\.|\/\/)(.*)(\.)/ )[2]
 	return `\n<li>
@@ -10,6 +11,7 @@ const listtemplate = page => {
 			 </li>\n`
 }
 
+// Template for html pasted into mail
 const mailtemplate = categories => { 
 	let html = ''
 	for( cat in categories ) { 
@@ -23,6 +25,7 @@ const mailtemplate = categories => {
 	return html
  }
 
+// Going from the constructed data to html
 const structure = pages => { 
 
 	// Make an array of unique categories

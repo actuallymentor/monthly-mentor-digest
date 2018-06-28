@@ -11,8 +11,11 @@ const data = {
 	archive: `${__dirname}/archive/input-${new Date}.old`
 }
 
+// Read links from file
 fs.readFile( data.input, 'utf8' )
+// Turn string into array
 .then( linkstring => linkstring.split( '\n' ) )
+// Split url/cat strings into objects
 .then( linkarray => linkarray.map( link => { 
 	const split = link.split( ' ' )
 	return { 
@@ -20,8 +23,13 @@ fs.readFile( data.input, 'utf8' )
 		category: split[1] || 'General'
 	}
 } ) )
+// Grab the summary of the links through the SMMRY and Youtube API
 .then( links => Promise.all( links.map( link => tldr( link ) ) ) )
+// Make html
 .then( htmlify )
+// Write outcome to file
 .then( html => fs.writeFile( data.output, html ) )
+// Take inout file and move it to archive
 .then( f => fs.rename( data.input, data.archive ) )
+// Complain to the console on fail
 .catch( console.log.bind( console ) )
