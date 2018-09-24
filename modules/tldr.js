@@ -12,7 +12,7 @@ const youtube = require( `${__dirname}/videos.js` )
 const gettldr = url => { 
 
 	// If it is not a video
-	if( url.url.toLowerCase().indexOf( 'youtube' ) == -1 ) return tldr.summarizeUrl( url.url ).then( summary => { 
+	if( url.url.toLowerCase().indexOf( 'youtube.com/watch' ) == -1 ) return tldr.summarizeUrl( url.url ).then( summary => { 
 		// Destructure data
 		const { sm_api_content, sm_api_title, sm_api_content_reduced, sm_api_character_count } = summary
 		// Length of input in characters
@@ -31,6 +31,7 @@ const gettldr = url => {
 			readtime: `${Math.floor( length / 2300 )}-${Math.floor( length * 2 / 2300 )} minutes`
 		}
 	} )
+	.catch( err => console.log( url, err ) )
 
 	// If the above didn't match, we are dealing with a video
 	return youtube( url.url ).then( video => { 
@@ -45,6 +46,7 @@ const gettldr = url => {
 			duration: `${ hours ? hours + ' hours and ' + minutes + ' minutes' : minutes + ' minutes'}`
 		}
 	 } )
+	.catch( err => console.log( url, err ) )
 
 }
 
