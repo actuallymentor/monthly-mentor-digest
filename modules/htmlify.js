@@ -16,9 +16,8 @@ const mailtemplate = categories => {
 	let html = ''
 	for( cat in categories ) { 
 		html += `<b>${cat}</b>
-				<br>
-				<br>
 				<ul>${ categories[ cat ] }</ul>
+				<br>
 				<br>
 				`
 	}

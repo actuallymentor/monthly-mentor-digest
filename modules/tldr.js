@@ -13,8 +13,20 @@ const gettldr = url => {
 
 	// If it is not a video
 	if( url.url.toLowerCase().indexOf( 'youtube.com/watch' ) == -1 ) return tldr.summarizeUrl( url.url ).then( summary => { 
+		// console.log( summary )
 		// Destructure data
-		const { sm_api_content, sm_api_title, sm_api_content_reduced, sm_api_character_count } = summary
+		const { sm_api_error, sm_api_content, sm_api_title, sm_api_content_reduced, sm_api_character_count } = summary
+
+		// If error, return
+		if( sm_api_error ) return {
+			url: url.url,
+			title: 'TITLE',
+			type: 'TYPE',
+			category: url.category,
+			tldr: 'SUMMARY',
+			length: 'LENGTH',
+			readtime: `XXX minutes`
+		}
 		// Length of input in characters
 		const length = ( 100 * sm_api_character_count ) / ( 100 - sm_api_content_reduced.match( /\d+/ ) )
 
