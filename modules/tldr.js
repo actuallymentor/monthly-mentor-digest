@@ -14,9 +14,9 @@ const gettldr = url => {
 	// If it is not a video
 	if( url.url.toLowerCase().indexOf( 'youtube.com/watch' ) == -1 ) return tldr.summarizeUrl( url.url ).then( summary => { 
 		// Destructure data
-		const { sm_api_content, sm_api_title, sm_api_content_reduced, sm_api_character_count } = summary
+		const { sm_api_error, sm_api_content, sm_api_title, sm_api_content_reduced, sm_api_character_count } = summary
 		// Length of input in characters
-		const length = ( 100 * sm_api_character_count ) / ( 100 - sm_api_content_reduced.match( /\d+/ ) )
+		const length = sm_api_error == 3 ? 100 : ( 100 * sm_api_character_count ) / ( 100 - sm_api_content_reduced.match( /\d+/ ) )
 
 		// Return structured data
 		// The reading time is an estimate based on me trying to read slow ( 370 wpm ) and converting the demo text to char count
