@@ -16,7 +16,7 @@ const listtemplate = page => {
 		 (<a href="${page.url}">link on <span style="text-transform: capitalize">${ domain }</span></a>)<br><br>
 	 </li>\n`
 
-	if( page.category.toLowerCase() == 'video' ) return `\n<li>
+	if( page.type.toLowerCase() == 'video' ) return `\n<li>
 		<b>[ ${ page.type } ${ page.readtime || page.duration } ] ${ page.title }</b> - MENTOR_NOTES_HERE
 		 (<a href="${page.url}">link on <span style="text-transform: capitalize">${ domain }</span></a>)<br><br>
 	 </li>\n`
