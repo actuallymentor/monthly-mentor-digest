@@ -3,7 +3,25 @@
 
 // Termplate for <li>'s
 const listtemplate = page => { 
-	const domain = page.url.match( /(\/\/www\.|\/\/)(.*)(\.)/ )[2]
+	const domain = page.url.match( /(\/\/www\.|\/\/)(.*?)(\.)/ )[2]
+
+	// If tldr failed, simplify
+	if( !page.tldr ) return `\n<li>
+		<b>TITLE</b> - MENTOR_NOTES_HERE - (<a href="${page.url}">link on <span style="text-transform: capitalize">${ domain }</span></a>)<br><br>
+	 </li>\n`
+
+	if( page.type.toLowerCase() == 'shopping' ) return `\n<li>
+		<b>[ Product ] ${ page.title }</b> - MENTOR_NOTES_HERE
+		 - ${ page.tldr && `<i><u>auto-summary</u>: ${ page.tldr }</i>` } 
+		 (<a href="${page.url}">link on <span style="text-transform: capitalize">${ domain }</span></a>)<br><br>
+	 </li>\n`
+
+	if( page.category.toLowerCase() == 'video' ) return `\n<li>
+		<b>[ ${ page.type } ${ page.readtime || page.duration } ] ${ page.title }</b> - MENTOR_NOTES_HERE
+		 (<a href="${page.url}">link on <span style="text-transform: capitalize">${ domain }</span></a>)<br><br>
+	 </li>\n`
+
+
 	return `\n<li>
 				<b>[ ${ page.type } ${ page.readtime || page.duration } ] ${ page.title }</b> - MENTOR_NOTES_HERE
 				 - <i><u>auto-summary</u>: ${ page.tldr }</i>

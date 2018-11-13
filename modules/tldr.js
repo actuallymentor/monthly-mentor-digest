@@ -1,6 +1,6 @@
 const tldr = require('smmry')( {
   SM_API_KEY: process.env.smmryapikey,
-  SM_LENGTH: 5,
+  SM_LENGTH: 2,
   SM_WITH_ENCODE: true
 } )
 
@@ -21,11 +21,11 @@ const gettldr = url => {
 		if( sm_api_error ) return {
 			url: url.url,
 			title: 'TITLE',
-			type: 'TYPE',
+			type: undefined,
 			category: url.category,
-			tldr: 'SUMMARY',
-			length: 'LENGTH',
-			readtime: `XXX minutes`
+			tldr: undefined,
+			length: undefined,
+			readtime: undefined
 		}
 		// Length of input in characters
 		const length = ( 100 * sm_api_character_count ) / ( 100 - sm_api_content_reduced.match( /\d+/ ) )
