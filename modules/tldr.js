@@ -28,7 +28,7 @@ const gettldr = url => {
 			readtime: undefined
 		}
 		// Length of input in characters
-		const length = ( 100 * sm_api_character_count ) / ( 100 - sm_api_content_reduced.match( /\d+/ ) )
+		const length = sm_api_error == 3 ? 100 : ( 100 * sm_api_character_count ) / ( 100 - sm_api_content_reduced.match( /\d+/ ) )
 
 		// Return structured data
 		// The reading time is an estimate based on me trying to read slow ( 370 wpm ) and converting the demo text to char count
