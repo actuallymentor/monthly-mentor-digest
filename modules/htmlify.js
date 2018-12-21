@@ -10,7 +10,7 @@ const listtemplate = page => {
 		<b>TITLE</b> - MENTOR_NOTES_HERE - (<a href="${page.url}">link on <span style="text-transform: capitalize">${ domain }</span></a>)<br><br>
 	 </li>\n`
 
-	if( page.type.toLowerCase() == 'shopping' ) return `\n<li>
+	if( page.category.toLowerCase() == 'shopping' ) return `\n<li>
 		<b>[ Product ] ${ page.title }</b> - MENTOR_NOTES_HERE
 		 - ${ page.tldr && `<i><u>auto-summary</u>: ${ page.tldr }</i>` } 
 		 (<a href="${page.url}">link on <span style="text-transform: capitalize">${ domain }</span></a>)<br><br>
