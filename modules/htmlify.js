@@ -53,7 +53,7 @@ const structure = pages => {
 	}
 
 	// Loop over all categories
-	for ( cat in categories ) { 
+	for ( let cat in categories ) { 
 		// Grab the current cat, make html of the link objects and join them with newlines
 		categories[ cat ] = categories[ cat ].map( link => listtemplate( link ) ).join( '\n' )
 	}
